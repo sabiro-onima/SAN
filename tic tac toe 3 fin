@@ -11,7 +11,7 @@ MODE_HUMAN_VS_AI = '2'
 
 
 def draw_board():
-	''' Выводим игровое поле '''
+	''' Wyświetlanie pola gry '''
 	print (('_' * 4 * board_size ))
 	for i in range(board_size):
 		print ((' ' * 3 + '|') * 3)
@@ -86,14 +86,14 @@ def start_game(mode):
 
 	# игра продолжается до тех пор, пока кто-то не выиграет или выйдет
 	while (step < 9) and (check_win(board) == False):
-		index = input('Ходит ' + current_player + '. Введите номер поля (0 - выход):')
+		index = input('Idzie ' + current_player + '. Wprowadź numer pola (0 - wyjście):')
 
 		if (int(index) == 0):
 			break
 
 		# если получилось сделать шаг
 		if (game_step(int(index), current_player)):
-			print('Удачный ход')
+			print('Pucz')
 
 			current_player = next_player(current_player)
 
@@ -108,16 +108,16 @@ def start_game(mode):
 			draw_board()
             
 		else:
-			print('Неверный номер! Повторите!')
+			print('Zły numer! Powiedz to jeszcze raz!')
 
 	if (step > 8):
-		print('Игра оконцена. Ничья!')
+		print('Gra jest końcem. Rysować!')
 	elif check_win(board):
-		print('Выиграл ' + check_win(board))
+		print('Wygrał ' + check_win(board))
 
-print('Добро пожаловать в игру!')
+print('Witamy w grze!')
 mode = 0 
 while mode not in (MODE_HUMAN_VS_HUMAN, MODE_HUMAN_VS_AI):
-	mode = input("Режим игры:\n1 - Человек против Человека\n2 - Человек против Компьютер\nВыберите режим игры:")
+	mode = input("Tryb gry:\n1 - Człowiek kontra człowiek\n2 - Człowiek kontra komputer\nWybierz tryb gry:")
 # начало игры
 start_game(mode)
